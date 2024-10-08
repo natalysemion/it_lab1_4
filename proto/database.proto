@@ -1,0 +1,64 @@
+syntax = "proto3";
+
+package database;
+
+// Опис структури даних для таблиць
+message Field {
+    string name = 1;
+    string type = 2; // Типи: integer, real, char, string, date, dateInvl
+}
+
+message Value {
+    string field_name = 1;
+    string value = 2;
+}
+
+message Row {
+    int32 id = 1;
+    repeated Value values = 2;
+}
+
+// Запити для роботи з таблицями
+message CreateTableRequest {
+    string table_name = 1;
+    repeated Field fields = 2;
+}
+
+message CreateRowRequest {
+    string table_name = 1;
+    repeated Value values = 2;
+}
+
+message GetAllRowsRequest {
+    string table_name = 1;
+}
+
+message TableDifferenceRequest {
+    string table1_name = 1;
+    string table2_name = 2;
+}
+
+// Відповіді сервісу
+message CreateTableResponse {
+    string message = 1;
+}
+
+message CreateRowResponse {
+    string message = 1;
+}
+
+message GetAllRowsResponse {
+    repeated Row rows = 1;
+}
+
+message TableDifferenceResponse {
+    repeated Row difference = 1;
+}
+
+// Сервіс для роботи з базою даних
+service DatabaseService {
+    rpc CreateTable(CreateTableRequest) returns (CreateTableResponse);
+    rpc CreateRow(CreateRowRequest) returns (CreateRowResponse);
+    rpc GetAllRows(GetAllRowsRequest) returns (GetAllRowsResponse);
+    rpc TableDifference(TableDifferenceRequest) returns (TableDifferenceResponse);
+}

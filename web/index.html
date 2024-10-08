@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Таблична База Даних</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/grpc-web/1.3.0/grpc-web.min.js"></script>
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Система Управління Табличними Базами Даних</h1>
+
+        <h2>Створення Таблиці</h2>
+        <input type="text" id="tableName" placeholder="Назва таблиці">
+        <button id="createTableBtn">Створити Таблицю</button>
+
+        <h2>Додавання Рядка</h2>
+        <input type="text" id="rowName" placeholder="Ім'я">
+        <button id="createRowBtn">Додати Рядок</button>
+
+        <h2>Отримання Всієї Інформації</h2>
+        <button id="getAllRowsBtn">Показати Всі Рядки</button>
+        <div id="rowsContainer"></div>
+
+        <h2>Отримання різниці таблиць</h2>
+        <input type="text" id="table1Name" placeholder="Назва першої таблиці">
+        <input type="text" id="table2Name" placeholder="Назва другої таблиці">
+        <button id="getTableDifferenceBtn">Показати різницю</button>
+        <div id="differenceContainer"></div>
+    </div>
+</body>
+</html>
